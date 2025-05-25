@@ -38,6 +38,22 @@ class TMDBService {
     return this.fetchFromTMDB<MovieResponse>('/search/movie', { query, page });
   }
 
+  async getSearchSuggestions(query: string, limit = 5): Promise<{movies: Movie[], tvShows: TVShow[]}> {
+    if (!query || query.trim().length < 2) {
+      return { movies: [], tvShows: [] };
+    }
+    
+    const [movieResults, tvResults] = await Promise.all([
+      this.fetchFromTMDB<MovieResponse>('/search/movie', { query, page: 1 }),
+      this.fetchFromTMDB<TVShowResponse>('/search/tv', { query, page: 1 })
+    ]);
+    
+    return {
+      movies: movieResults.results.slice(0, limit),
+      tvShows: tvResults.results.slice(0, limit)
+    };
+  }
+
   async getMovieDetails(id: number): Promise<Movie> {
     return this.fetchFromTMDB<Movie>(`/movie/${id}`, { append_to_response: 'credits,keywords' });
   }
