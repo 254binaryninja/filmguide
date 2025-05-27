@@ -10,6 +10,9 @@
 !.yarn/releases
 !.yarn/versions
 
+## Folder containing the design images 
+/design_system
+
 # testing
 /coverage
 
