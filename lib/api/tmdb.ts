@@ -1,11 +1,30 @@
 // lib/api/tmdb.ts
 import { Genre, Movie, MovieResponse, TVShow, TVShowResponse } from "./types";
 
+
 class TMDBService {
   private baseURL = 'https://api.themoviedb.org/3';
-  private accessToken = process.env.TMDB_ACCESS_TOKEN;
+  private baseImageURL = 'https://image.tmdb.org/t/p';
+  private accessToken = process.env.NEXT_PUBLIC_TMDB_ACCESS_TOKEN!;
+
+  // Helper methods for image URLs
+
+getPosterURLProxy(path: string | null, size: 'w92' | 'w154' | 'w185' | 'w342' | 'w500' | 'w780' | 'original' = 'w342'): string | null {
+  if (!path) return null;
+  const imageUrl = `${this.baseImageURL}/${size}${path}`;
+  return `/api/image-proxy?url=${encodeURIComponent(imageUrl)}`;
+}
+
+getBackdropURLProxy(path: string | null, size: 'w300' | 'w780' | 'w1280' | 'original' = 'w1280'): string | null {
+  if (!path) return null;
+  const imageUrl = `${this.baseImageURL}/${size}${path}`;
+  return `/api/image-proxy?url=${encodeURIComponent(imageUrl)}`;
+}
 
   private async fetchFromTMDB<T>(endpoint: string, params: Record<string, any> = {}): Promise<T> {
+    if (!this.accessToken) {
+      throw new Error('TMDB_ACCESS_TOKEN is not set in environment variables.');
+    }
     const url = new URL(`${this.baseURL}${endpoint}`);
     Object.entries(params).forEach(([key, value]) => {
       if (value !== undefined && value !== null) {
