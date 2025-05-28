@@ -18,7 +18,8 @@ getPosterURLProxy(path: string | null, size: 'w92' | 'w154' | 'w185' | 'w342' | 
 getBackdropURLProxy(path: string | null, size: 'w300' | 'w780' | 'w1280' | 'original' = 'w1280'): string | null {
   if (!path) return null;
   const imageUrl = `${this.baseImageURL}/${size}${path}`;
-  return `/api/image-proxy?url=${encodeURIComponent(imageUrl)}`;
+  const proxyUrl = `/api/image-proxy?url=${encodeURIComponent(imageUrl)}`; // Debug log
+  return proxyUrl;
 }
 
   private async fetchFromTMDB<T>(endpoint: string, params: Record<string, any> = {}): Promise<T> {
@@ -57,19 +58,17 @@ getBackdropURLProxy(path: string | null, size: 'w300' | 'w780' | 'w1280' | 'orig
     return this.fetchFromTMDB<MovieResponse>('/search/movie', { query, page });
   }
 
-  async getSearchSuggestions(query: string, limit = 5): Promise<{movies: Movie[], tvShows: TVShow[]}> {
+  async getSearchSuggestions(query: string, limit = 5): Promise<{movies: Movie[] }> {
     if (!query || query.trim().length < 2) {
-      return { movies: [], tvShows: [] };
+      return { movies: [] };
     }
     
-    const [movieResults, tvResults] = await Promise.all([
-      this.fetchFromTMDB<MovieResponse>('/search/movie', { query, page: 1 }),
-      this.fetchFromTMDB<TVShowResponse>('/search/tv', { query, page: 1 })
+    const [movieResults ] = await Promise.all([
+      this.fetchFromTMDB<MovieResponse>('/search/movie', { query, page: 1 })
     ]);
     
     return {
-      movies: movieResults.results.slice(0, limit),
-      tvShows: tvResults.results.slice(0, limit)
+      movies: movieResults.results.slice(0, limit)
     };
   }
 
