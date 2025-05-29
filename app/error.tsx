@@ -109,7 +109,7 @@ export default function Error({ error, reset }: ErrorProps) {
           className="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-md mx-auto leading-relaxed"
           variants={itemVariants}
         >
-          We encountered an unexpected error. Don't worry, our team has been notified and is working on a fix.
+          We encountered an unexpected error. Don`&apos;`t worry, our team has been notified and is working on a fix.
         </motion.p>
 
         {/* Error Details (Development only) */}

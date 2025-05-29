@@ -55,21 +55,7 @@ export default function NotFound() {
     }
   };
 
-  const glowVariants = {
-    glow: {
-      boxShadow: [
-        "0 0 20px rgba(59, 130, 246, 0.3)",
-        "0 0 40px rgba(59, 130, 246, 0.5)",
-        "0 0 20px rgba(59, 130, 246, 0.3)"
-      ],
-      transition: {
-        duration: 2,
-        repeat: Infinity,
-        ease: "easeInOut"
-      }
-    }
-  };
-
+   
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 flex flex-col">
       <div className="flex-1 flex items-center justify-center p-4">
@@ -111,8 +97,8 @@ export default function NotFound() {
             variants={itemVariants}
           >
             <p className="text-xl text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-              The page you're looking for seems to have wandered off into the digital wilderness. 
-              Don't worry, even the best explorers sometimes take a wrong turn!
+              The page you`&apos;`re looking for seems to have wandered off into the digital wilderness. 
+              Don`&apos;`t worry, even the best explorers sometimes take a wrong turn!
             </p>
             
             <div className="flex items-center justify-center gap-2 text-gray-500 dark:text-gray-400 mb-8">
