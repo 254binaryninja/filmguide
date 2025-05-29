@@ -55,10 +55,12 @@ pnpm install
 ```env
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
 CLERK_SECRET_KEY=your_clerk_secret_key
-NEXT_PUBLIC_TMDB_API_KEY=your_tmdb_api_key
+NEXT_PUBLIC_TMDB_ACCESS_TOKEN=your_tmdb_access_token
 NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
 ```
+
+> **Note:** See `.env.example` for a template of all required environment variables.
 
 4. Start the development server:
 
@@ -117,6 +119,29 @@ filmguide/
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## CI/CD Pipeline
+
+This project uses GitHub Actions for CI/CD:
+
+- **Continuous Integration**: Runs on every PR and push to main
+
+  - Linting and code quality checks
+  - Unit and integration tests
+  - Build verification
+
+- **Continuous Deployment**: Automatically deploys to Vercel on successful builds from the main branch
+
+### Required GitHub Secrets
+
+For CI/CD to work properly, add these secrets to your GitHub repository:
+
+- `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY`: Your Clerk publishable key
+- `CLERK_SECRET_KEY`: Your Clerk secret key
+- `NEXT_PUBLIC_TMDB_ACCESS_TOKEN`: Your TMDB access token
+- `VERCEL_TOKEN`: Your Vercel API token
+- `VERCEL_ORG_ID`: Your Vercel organization ID
+- `VERCEL_PROJECT_ID`: Your Vercel project ID
 
 ## Acknowledgments
 
