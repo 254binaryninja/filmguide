@@ -6,17 +6,15 @@ import Link from 'next/link';
 import { usePopularMoviesStore } from '@/store/usePopularMovies'
 import { Movie } from '@/lib/api/types';
 import { tmdbService } from '@/lib/api/tmdb';
-import { toast } from 'sonner';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PlayCircleIcon } from '@heroicons/react/24/solid';
 
 export default function FilmGuideHeroSection() {
-    const { movies, isLoading, error, fetchPopularMovies } = usePopularMoviesStore();
+    const { movies, isLoading,fetchPopularMovies } = usePopularMoviesStore();
     const [featuredMovie, setFeaturedMovie] = useState<Movie | null>(null);
-    const [previousFeatured, setPreviousFeatured] = useState<Movie | null>(null);
-    const [loading, setIsLoading] = useState(false);
+    const [, setPreviousFeatured] = useState<Movie | null>(null);
     const [thumbnailMovies, setThumbnailMovies] = useState<Movie[]>([]);
-    const [isChanging, setIsChanging] = useState(false);
+    const [, setIsChanging] = useState(false);
 
     useEffect(() => {
         // Fetch popular movies when component mounts

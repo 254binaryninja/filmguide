@@ -63,6 +63,7 @@ const BackdropSection = ({ movie }: { movie: MovieDetails }) => {
             width={1280}
             height={720}
             onError={(e) => {
+              console.error('Error loading backdrop Image:', e)
               console.error("Backdrop image failed to load:", backdropUrl);
               setImageError(true);
             }}
@@ -97,7 +98,7 @@ const BackdropSection = ({ movie }: { movie: MovieDetails }) => {
               transition={{ delay: 0.4 }}
               className="text-gray-300 italic mt-2"
             >
-              "{movie.tagline}"
+              `&quot;`{movie.tagline}`&quot;`
             </motion.p>
           )}
         </div>

@@ -16,8 +16,6 @@ import { Input } from "@/components/ui/input";
 import LoadingState from '../common/LoadingState';
 import ErrorState from '../common/ErrorState';
 import { useUser } from '@clerk/nextjs';
-import { Checkbox } from "@/components/ui/checkbox";
-import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import Image from 'next/image';
 import debounce from 'lodash/debounce';
@@ -33,18 +31,19 @@ export default function Search() {
 
   // Debounce search term to avoid excessive API calls
   const debouncedSearch = useCallback(
-    debounce((value: string) => {
-      setDebouncedSearchTerm(value);
-    }, 500),
+    (value: string) => {
+      const debouncedFn = debounce((val: string) => {
+        setDebouncedSearchTerm(val);
+      }, 500);
+      debouncedFn(value);
+      return () => debouncedFn.cancel();
+    },
     []
   );
 
   // Update debounced search term when input changes
   useEffect(() => {
     debouncedSearch(searchTerm);
-    return () => {
-      debouncedSearch.cancel();
-    };
   }, [searchTerm, debouncedSearch]);
 
   // Get search suggestions
@@ -150,13 +149,13 @@ export default function Search() {
           
           {/* Loading state */}
           {(isLoadingMovies || isLoadingGenres || isLoadingSuggestions) && (
-            <div className="py-4">
+            <div className="py-4" data-testid="loading-state">
               <LoadingState />
             </div>
           )}
           
           {/* Error state */}
-          {error && <ErrorState error={error} />}
+          {error && <div data-testid="error-state"><ErrorState error={error} /></div> }
           
           {/* Suggestions when typing - only show if results aren't ready yet */}
           {showSuggestions && (

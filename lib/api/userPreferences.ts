@@ -30,7 +30,7 @@ export class UserPreferences {
             }
 
             return data?.map(item => item.movie_id) || [];
-        } catch (err: any) {
+        } catch (err) {
             console.error('Watchlist fetch error:', err);
             return [];
         }
@@ -42,8 +42,7 @@ export class UserPreferences {
             const { data,error } = await supabase
                 .from('watchlist')
                 .select()
-                .eq('movie_id', movieId)
-                .eq('user_id', userId);
+                .match({ movie_id: movieId, user_id: userId });
 
             if (error) {
                 throw new Error(`Failed to get movie from watchlist: ${error.message}`);
@@ -78,8 +77,7 @@ export class UserPreferences {
             const { error } = await supabase
                 .from('watchlist')
                 .delete()
-                .eq('movie_id', movieId)
-                .eq('user_id', userId);
+                .match({ movie_id: movieId, user_id: userId });
 
             if (error) {
                 throw new Error(`Failed to remove movie from watchlist: ${error.message}`);
@@ -102,7 +100,7 @@ export class UserPreferences {
             }
 
             return data?.map(item => item.movie_id) || [];
-        } catch (err: any) {
+        } catch (err) {
             console.error('History fetch error:', err);
             return [];
         }
@@ -115,8 +113,7 @@ export class UserPreferences {
             const { data, error } = await supabase
                 .from('history')
                 .select()
-                .eq('movie_id', movieId)
-                .eq('user_id', userId);
+                .match({ movie_id: movieId, user_id: userId });
 
             if (error) {
                 throw new Error(`Failed to get movie from history: ${error.message}`);
@@ -151,8 +148,7 @@ export class UserPreferences {
             const { error } = await supabase
                 .from('history')
                 .delete()
-                .eq('movie_id', movieId)
-                .eq('user_id', userId);
+                .match({ movie_id: movieId, user_id: userId });
 
             if (error) {
                 throw new Error(`Failed to remove movie from history: ${error.message}`);

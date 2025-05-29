@@ -7,7 +7,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
 import { useRouter } from "next/navigation"
 import { useAuth } from "@clerk/nextjs"
 import { toast } from "sonner"
@@ -46,9 +46,9 @@ export default function Preference({preference}:PreferenceProps) {
             setToken(null);
             setUserPreferences(null);
         }
-    }, [session, isSignedIn]);
+    }, [session, isSignedIn, token]);
 
-    const fetchPreferenceData = async () => {
+    const fetchPreferenceData = useCallback(async () => {
         if (!isSignedIn || !user || !userPreferences) {
             console.log("Cannot fetch preference data: Missing user or preferences");
             return;
@@ -81,13 +81,13 @@ export default function Preference({preference}:PreferenceProps) {
         } finally {
             setLoading(false);
         }
-    };
+    }, [isSignedIn, user, userPreferences, preference]);
 
     useEffect(() => {
         if (open && isSignedIn && userPreferences) {
             fetchPreferenceData();
         }
-    }, [open, isSignedIn, userPreferences]);
+    }, [open, isSignedIn, userPreferences, fetchPreferenceData]);
 
     const handleRemoveItem = async (movieId: number) => {
         if (!isSignedIn || !user || !userPreferences) return;

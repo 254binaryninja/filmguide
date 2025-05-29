@@ -35,6 +35,8 @@ export default function AuthLayout({children}: {children: React.ReactNode}) {
     }
   }, [movies])
 
+  if (!mounted) return null
+
   return (
     <div className="flex flex-col md:flex-row min-h-screen dark:bg-gray-900 transition-colors duration-200">
       {/* Left side - Auth form */}

@@ -1,12 +1,13 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { MovieDetails } from "@/lib/api/types";
 import { tmdbService } from '@/lib/api/tmdb';
 import { motion } from 'framer-motion';
 import MovieInfoCard from './MovieInfocard';
 import { useAuth, useSession, useUser } from '@clerk/nextjs';
 import { UserPreferences } from '@/lib/api/userPreferences';
+import Image from 'next/image';
 
 
 const ActionButtons = ({ 
@@ -59,6 +60,23 @@ const MoviePoster = ({ movie }: { movie: MovieDetails }) => {
   
   const posterUrl = movie?.poster_path ? tmdbService.getPosterURLProxy(movie.poster_path, "w500") : null;
 
+  // Separate function to load user preferences
+  const loadUserPreferences = useCallback(async (userPrefs: UserPreferences) => {
+    if (!user) return;
+    
+    try {
+      // Check if movie is in watchlist
+      const watchlistStatus = await userPrefs.isInWatchlist(movie.id, user.id);
+      setIsWatchlist(watchlistStatus);
+      
+      // Check if movie is in history
+      const historyStatus = await userPrefs.isInHistory(movie.id, user.id);
+      setIsHistory(historyStatus);
+    } catch (error) {
+      console.error('Error loading user preferences:', error);
+    }
+  }, [user, movie.id]);
+
   // Initialize userPreferences when session changes
   useEffect(() => {
     const initUserPrefs = async () => {
@@ -82,24 +100,7 @@ const MoviePoster = ({ movie }: { movie: MovieDetails }) => {
     };
     
     initUserPrefs();
-  }, [session, isSignedIn, user]);
-
-  // Separate function to load user preferences
-  const loadUserPreferences = async (userPrefs: UserPreferences) => {
-    if (!user) return;
-    
-    try {
-      // Check if movie is in watchlist
-      const watchlistStatus = await userPrefs.isInWatchlist(movie.id, user.id);
-      setIsWatchlist(watchlistStatus);
-      
-      // Check if movie is in history
-      const historyStatus = await userPrefs.isInHistory(movie.id, user.id);
-      setIsHistory(historyStatus);
-    } catch (error) {
-      console.error('Error loading user preferences:', error);
-    }
-  };
+  }, [session, isSignedIn, user, loadUserPreferences]);
 
   // Toggle watchlist and history states
   const toggleWatchlist = async () => {
@@ -154,7 +155,7 @@ const MoviePoster = ({ movie }: { movie: MovieDetails }) => {
           className="relative aspect-[2/3] mb-6 rounded-lg overflow-hidden shadow-lg dark:shadow-gray-800/30"
         >
           {posterUrl && !imageError ? (
-            <img 
+            <Image 
               src={posterUrl}
               alt={movie.title}
               className="w-full h-full object-cover"

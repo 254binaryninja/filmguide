@@ -9,6 +9,7 @@ import LoadingState from "@/components/common/LoadingState";
 import ErrorState from "@/components/common/ErrorState";
 import BackdropSection from "./BackdropSection";
 import MoviePoster from "./MoviePoster";
+import Image from "next/image";
 
 
 
@@ -48,7 +49,7 @@ const CastMember = ({ person }: { person: Cast }) => {
     >
       <div className="relative h-40 bg-gray-200 dark:bg-gray-700">
         {profileUrl && !imageError ? (
-          <img
+          <Image
             src={profileUrl}
             alt={person.name}
             className="w-full h-full object-cover"
