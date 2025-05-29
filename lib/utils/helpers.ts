@@ -1,9 +1,12 @@
 // Simple in-memory cache for image data
-const imageCache = new Map<string, {
-  data: ArrayBuffer,
-  contentType: string,
-  timestamp: number
-}>();
+const imageCache = new Map<
+  string,
+  {
+    data: ArrayBuffer;
+    contentType: string;
+    timestamp: number;
+  }
+>();
 
 const CACHE_TTL = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
 
@@ -15,10 +18,14 @@ export function getCachedImage(url: string) {
   return null;
 }
 
-export function cacheImage(url: string, data: ArrayBuffer, contentType: string) {
+export function cacheImage(
+  url: string,
+  data: ArrayBuffer,
+  contentType: string,
+) {
   imageCache.set(url, {
     data,
     contentType,
-    timestamp: Date.now()
+    timestamp: Date.now(),
   });
 }

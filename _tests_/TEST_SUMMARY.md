@@ -5,6 +5,7 @@ Based on the analysis of the codebase, I've created comprehensive unit tests for
 ## API and Data Service Tests
 
 1. **TMDB Service Tests** (`lib/api/__tests__/tmdb.test.ts`)
+
    - Tests for image URL methods, API fetch methods, error handling, and various endpoints
    - Includes mocking the fetch API to simulate responses and errors
 
@@ -12,10 +13,10 @@ Based on the analysis of the codebase, I've created comprehensive unit tests for
    - Tests for watchlist and history operations (get, add, remove, check)
    - Includes error handling and edge cases
 
-
 ## Utility Tests
 
 1. **Image Caching Helpers Tests** (`lib/utils/__tests__/helpers.test.ts`)
+
    - Tests for caching and retrieving cached images
    - Tests cache expiration functionality
 
@@ -26,6 +27,7 @@ Based on the analysis of the codebase, I've created comprehensive unit tests for
 ## Component Tests
 
 1. **MovieCard Tests** (`components/movies/__tests__/MovieCard.test.tsx`)
+
    - Tests rendering with different movie data
    - Tests handling of null/empty values
 

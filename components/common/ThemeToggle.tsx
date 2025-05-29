@@ -1,8 +1,8 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import React, { useEffect,useState } from "react";
-import { SunIcon, MoonIcon } from '@heroicons/react/24/outline'
+import React, { useEffect, useState } from "react";
+import { SunIcon, MoonIcon } from "@heroicons/react/24/outline";
 
 function ThemeToggle() {
   const { theme, setTheme } = useTheme();
@@ -24,7 +24,11 @@ function ThemeToggle() {
   };
   return (
     <button onClick={() => toggleTheme()} className="m-1 p-2">
-      {theme === "dark" ? <MoonIcon className='h-5 w-5' /> : <SunIcon className='h-5 w-5' />}
+      {theme === "dark" ? (
+        <MoonIcon className="h-5 w-5" />
+      ) : (
+        <SunIcon className="h-5 w-5" />
+      )}
     </button>
   );
 }

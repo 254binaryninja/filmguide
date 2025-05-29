@@ -1,12 +1,11 @@
-import { create } from 'zustand';
-import { tmdbService } from '@/lib/api/tmdb';
-import { Movie } from '@/lib/api/types';
+import { create } from "zustand";
+import { tmdbService } from "@/lib/api/tmdb";
+import { Movie } from "@/lib/api/types";
 import { QueryClient } from "@tanstack/react-query";
 
 const queryClient = new QueryClient();
 
 export default queryClient;
-
 
 interface PopularMoviesState {
   movies: Movie[];
@@ -27,18 +26,18 @@ export const usePopularMoviesStore = create<PopularMoviesState>((set) => ({
     set({ isLoading: true, error: null });
     try {
       const data = await queryClient.fetchQuery({
-        queryKey:['popularmovies-store', page],
-        queryFn: () => tmdbService.getPopularMovies(page)
+        queryKey: ["popularmovies-store", page],
+        queryFn: () => tmdbService.getPopularMovies(page),
       });
-      set({ 
-        movies: data.results, 
-        isLoading: false, 
+      set({
+        movies: data.results,
+        isLoading: false,
         totalPages: data.total_pages,
-        currentPage: page
+        currentPage: page,
       });
     } catch (error) {
-      console.error('Error fetching popular movies:', error);
+      console.error("Error fetching popular movies:", error);
       set({ isLoading: false, error });
     }
-  }
+  },
 }));

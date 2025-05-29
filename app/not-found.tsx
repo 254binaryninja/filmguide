@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { motion } from "framer-motion";
 import { ArrowLeft, Home, MapPin } from "lucide-react";
@@ -6,11 +6,10 @@ import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 import Error404 from "@/public/animations/404-error.json";
 
-const Lottie = dynamic(() => import('lottie-react'), { ssr: false });
+const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 
 export default function NotFound() {
   const router = useRouter();
- 
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -18,9 +17,9 @@ export default function NotFound() {
       opacity: 1,
       transition: {
         duration: 0.6,
-        staggerChildren: 0.1
-      }
-    }
+        staggerChildren: 0.1,
+      },
+    },
   };
 
   const itemVariants = {
@@ -28,19 +27,19 @@ export default function NotFound() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.5 }
-    }
+      transition: { duration: 0.5 },
+    },
   };
 
   const buttonVariants = {
     hover: {
       scale: 1.05,
-      transition: { duration: 0.2 }
+      transition: { duration: 0.2 },
     },
     tap: {
       scale: 0.95,
-      transition: { duration: 0.1 }
-    }
+      transition: { duration: 0.1 },
+    },
   };
 
   const floatingVariants = {
@@ -50,12 +49,11 @@ export default function NotFound() {
       transition: {
         duration: 4,
         repeat: Infinity,
-        ease: "easeInOut"
-      }
-    }
+        ease: "easeInOut",
+      },
+    },
   };
 
-   
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 flex flex-col">
       <div className="flex-1 flex items-center justify-center p-4">
@@ -75,7 +73,7 @@ export default function NotFound() {
               animationData={Error404}
               loop={true}
               autoplay={true}
-              style={{ width: '100%', height: '100%' }}
+              style={{ width: "100%", height: "100%" }}
             />
           </motion.div>
 
@@ -97,10 +95,11 @@ export default function NotFound() {
             variants={itemVariants}
           >
             <p className="text-xl text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-              The page you`&apos;`re looking for seems to have wandered off into the digital wilderness. 
-              Don`&apos;`t worry, even the best explorers sometimes take a wrong turn!
+              The page you`&apos;`re looking for seems to have wandered off into
+              the digital wilderness. Don`&apos;`t worry, even the best
+              explorers sometimes take a wrong turn!
             </p>
-            
+
             <div className="flex items-center justify-center gap-2 text-gray-500 dark:text-gray-400 mb-8">
               <MapPin className="w-5 h-5" />
               <span className="text-lg">You are here: Lost in cyberspace</span>
@@ -113,7 +112,7 @@ export default function NotFound() {
             variants={itemVariants}
           >
             <motion.button
-              onClick={() => router.push('/')}
+              onClick={() => router.push("/")}
               className="flex items-center gap-3 bg-gradient-to-r from-blue-500 to-indigo-500 text-white px-10 py-4 rounded-full font-semibold shadow-lg hover:shadow-xl transition-shadow"
               variants={buttonVariants}
               whileHover="hover"
@@ -144,7 +143,7 @@ export default function NotFound() {
             <p className="text-base">
               Contact our support team or check out our{" "}
               <button
-                onClick={() => router.push('/contact-us')}
+                onClick={() => router.push("/contact-us")}
                 className="text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300 underline"
               >
                 help center
@@ -163,7 +162,7 @@ export default function NotFound() {
               transition={{
                 duration: 10,
                 repeat: Infinity,
-                ease: "linear"
+                ease: "linear",
               }}
             />
             <motion.div
@@ -175,7 +174,7 @@ export default function NotFound() {
               transition={{
                 duration: 8,
                 repeat: Infinity,
-                ease: "linear"
+                ease: "linear",
               }}
             />
             <motion.div
@@ -187,7 +186,7 @@ export default function NotFound() {
               transition={{
                 duration: 6,
                 repeat: Infinity,
-                ease: "easeInOut"
+                ease: "easeInOut",
               }}
             />
           </div>

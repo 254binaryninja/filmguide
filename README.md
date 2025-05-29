@@ -38,17 +38,20 @@ A modern web application for movie enthusiasts to discover, track, and manage th
 ### Installation
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/yourusername/filmguide.git
 cd filmguide
 ```
 
 2. Install dependencies:
+
 ```bash
 pnpm install
 ```
 
 3. Create a `.env.local` file with the following variables:
+
 ```env
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
 CLERK_SECRET_KEY=your_clerk_secret_key
@@ -58,6 +61,7 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
 ```
 
 4. Start the development server:
+
 ```bash
 pnpm dev
 ```
@@ -81,6 +85,7 @@ pnpm coverage
 ```
 
 Current test coverage:
+
 - Components: ~89% coverage
 - API Services: ~90% coverage
 - User Preferences: ~91% coverage

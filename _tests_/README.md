@@ -65,14 +65,14 @@ For effective testing, we use mocking to isolate units under test:
 
 ```typescript
 // Example of mocking a module
-vi.mock('../path/to/module', () => ({
-  someFunction: vi.fn().mockReturnValue('mocked value')
+vi.mock("../path/to/module", () => ({
+  someFunction: vi.fn().mockReturnValue("mocked value"),
 }));
 
 // Example of mocking fetch
 global.fetch = vi.fn().mockResolvedValue({
   ok: true,
-  json: () => Promise.resolve({ data: 'mocked data' })
+  json: () => Promise.resolve({ data: "mocked data" }),
 });
 ```
 
@@ -103,10 +103,10 @@ describe('MyComponent', () => {
   it('should render successfully with data', () => {
     // Arrange
     const testData = { name: 'Test' };
-    
+
     // Act
     render(<MyComponent data={testData} />);
-    
+
     // Assert
     expect(screen.getByText('Test')).toBeInTheDocument();
   });
@@ -114,7 +114,7 @@ describe('MyComponent', () => {
   it('should handle null data gracefully', () => {
     // Arrange & Act
     render(<MyComponent data={null} />);
-    
+
     // Assert
     expect(screen.getByText('No data available')).toBeInTheDocument();
   });
