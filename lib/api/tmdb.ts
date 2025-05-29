@@ -5,7 +5,7 @@ import { Genre, Movie, MovieResponse, TVShow, TVShowResponse } from "./types";
 class TMDBService {
   private baseURL = 'https://api.themoviedb.org/3';
   private baseImageURL = 'https://image.tmdb.org/t/p';
-  private accessToken = process.env.NEXT_PUBLIC_TMDB_ACCESS_TOKEN!;
+  
 
   // Helper methods for image URLs
 
@@ -22,8 +22,10 @@ getBackdropURLProxy(path: string | null, size: 'w300' | 'w780' | 'w1280' | 'orig
   return proxyUrl;
 }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private async fetchFromTMDB<T>(endpoint: string, params: Record<string, any> = {}): Promise<T> {
-    if (!this.accessToken) {
+    const accessToken = process.env.NEXT_PUBLIC_TMDB_ACCESS_TOKEN!;
+    if (!accessToken) {
       throw new Error('TMDB_ACCESS_TOKEN is not set in environment variables.');
     }
     const url = new URL(`${this.baseURL}${endpoint}`);
@@ -35,7 +37,7 @@ getBackdropURLProxy(path: string | null, size: 'w300' | 'w780' | 'w1280' | 'orig
 
     const response = await fetch(url.toString(), {
       headers: {
-        Authorization: `Bearer ${this.accessToken}`,
+        Authorization: `Bearer ${accessToken}`,
         'Content-Type': 'application/json',
       },
     });
