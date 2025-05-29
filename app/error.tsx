@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { motion } from "framer-motion";
 import { ArrowLeft, Home, RefreshCw } from "lucide-react";
@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Error500 from "@/public/animations/server-error.json";
 
-const Lottie = dynamic(() => import('lottie-react'), { ssr: false });
+const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 
 interface ErrorProps {
   error: Error & { digest?: string };
@@ -34,9 +34,9 @@ export default function Error({ error, reset }: ErrorProps) {
       y: 0,
       transition: {
         duration: 0.6,
-        staggerChildren: 0.1
-      }
-    }
+        staggerChildren: 0.1,
+      },
+    },
   };
 
   const itemVariants = {
@@ -44,19 +44,19 @@ export default function Error({ error, reset }: ErrorProps) {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.5 }
-    }
+      transition: { duration: 0.5 },
+    },
   };
 
   const buttonVariants = {
     hover: {
       scale: 1.05,
-      transition: { duration: 0.2 }
+      transition: { duration: 0.2 },
     },
     tap: {
       scale: 0.95,
-      transition: { duration: 0.1 }
-    }
+      transition: { duration: 0.1 },
+    },
   };
 
   const floatingVariants = {
@@ -65,9 +65,9 @@ export default function Error({ error, reset }: ErrorProps) {
       transition: {
         duration: 3,
         repeat: Infinity,
-        ease: "easeInOut"
-      }
-    }
+        ease: "easeInOut",
+      },
+    },
   };
 
   return (
@@ -88,7 +88,7 @@ export default function Error({ error, reset }: ErrorProps) {
             animationData={Error500}
             loop={true}
             autoplay={true}
-            style={{ width: '100%', height: '100%' }}
+            style={{ width: "100%", height: "100%" }}
           />
         </motion.div>
 
@@ -109,16 +109,19 @@ export default function Error({ error, reset }: ErrorProps) {
           className="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-md mx-auto leading-relaxed"
           variants={itemVariants}
         >
-          We encountered an unexpected error. Don't worry, our team has been notified and is working on a fix.
+          We encountered an unexpected error. Don`&apos;`t worry, our team has
+          been notified and is working on a fix.
         </motion.p>
 
         {/* Error Details (Development only) */}
-        {process.env.NODE_ENV === 'development' && (
+        {process.env.NODE_ENV === "development" && (
           <motion.div
             className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4 mb-8 text-left"
             variants={itemVariants}
           >
-            <h3 className="text-sm font-semibold text-red-800 dark:text-red-300 mb-2">Error Details:</h3>
+            <h3 className="text-sm font-semibold text-red-800 dark:text-red-300 mb-2">
+              Error Details:
+            </h3>
             <code className="text-sm text-red-700 dark:text-red-400 break-all">
               {error.message}
             </code>
@@ -143,14 +146,14 @@ export default function Error({ error, reset }: ErrorProps) {
             whileHover="hover"
             whileTap="tap"
           >
-            <RefreshCw 
-              className={`w-5 h-5 ${isRetrying ? 'animate-spin' : ''}`} 
+            <RefreshCw
+              className={`w-5 h-5 ${isRetrying ? "animate-spin" : ""}`}
             />
-            {isRetrying ? 'Retrying...' : 'Try Again'}
+            {isRetrying ? "Retrying..." : "Try Again"}
           </motion.button>
 
           <motion.button
-            onClick={() => router.push('/')}
+            onClick={() => router.push("/")}
             className="flex items-center gap-3 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 px-8 py-4 rounded-full font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
             variants={buttonVariants}
             whileHover="hover"
@@ -183,7 +186,7 @@ export default function Error({ error, reset }: ErrorProps) {
             transition={{
               duration: 8,
               repeat: Infinity,
-              ease: "linear"
+              ease: "linear",
             }}
           />
           <motion.div
@@ -195,7 +198,7 @@ export default function Error({ error, reset }: ErrorProps) {
             transition={{
               duration: 6,
               repeat: Infinity,
-              ease: "linear"
+              ease: "linear",
             }}
           />
         </div>

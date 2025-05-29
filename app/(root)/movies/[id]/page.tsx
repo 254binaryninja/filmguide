@@ -1,41 +1,46 @@
-import { Metadata, ResolvingMetadata } from 'next';
-import { tmdbService } from '@/lib/api/tmdb';
-import MoviePage from '@/components/movies/MoviePage';
+import { Metadata } from "next";
+import { tmdbService } from "@/lib/api/tmdb";
+import MoviePage from "@/components/movies/MoviePage";
 
-type Props = {
-  params: { id: string }
+interface PageProps {
+  params: Promise<{
+    id: string;
+  }>;
 }
 
 // Generate metadata for the page
-export async function generateMetadata(
-  { params }: Props,
-  parent: ResolvingMetadata
-): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
   // Fetch movie details on the server
-  const id = parseInt(params.id);
+  const { id } = await params;
+  const movieId = parseInt(id);
+
   try {
-    const movie = await tmdbService.getMovieDetails(id);
-    
+    const movie = await tmdbService.getMovieDetails(movieId);
+
     return {
       title: `${movie.title} | FilmGuide`,
-      description: movie.overview?.substring(0, 160) || `Details about ${movie.title}`,
+      description:
+        movie.overview?.substring(0, 160) || `Details about ${movie.title}`,
     };
   } catch (error) {
-    console.error('Error generating metadata:', error);
+    console.error("Error generating metadata:", error);
     return {
-      title: 'Movie Details | FilmGuide',
-      description: 'View movie details',
+      title: "Movie Details | FilmGuide",
+      description: "View movie details",
     };
   }
 }
 
 // Server component
-export default function MovieDetailPage({ params }: Props) {
-  const id = parseInt(params.id);
-  
+export default async function MovieDetailPage({ params }: PageProps) {
+  const { id } = await params;
+  const movieId = parseInt(id);
+
   return (
     <div>
-      <MoviePage id={id} />
+      <MoviePage id={movieId} />
     </div>
   );
 }

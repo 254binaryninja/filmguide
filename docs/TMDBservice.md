@@ -8,10 +8,11 @@ The `TMDBService` class provides a clean, typed interface for interacting with T
 
 ```typescript
 class TMDBService {
-  private baseURL = 'https://api.themoviedb.org/3';
+  private baseURL = "https://api.themoviedb.org/3";
   private accessToken = process.env.TMDB_ACCESS_TOKEN;
-  
+
   // Methods...
 }
 
 export const tmdbService = new TMDBService();
+```

@@ -13,6 +13,8 @@
 ## Folder containing the design images 
 /design_system
 
+/.cursor/
+
 # testing
 /coverage
 

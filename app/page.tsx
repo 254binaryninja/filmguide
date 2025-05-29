@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Header from "@/components/header/header";
 import FilmGuideHeroSection from "@/components/hero/HeroSection";
 import MovieSection from "@/components/movies/MovieSection";
@@ -15,4 +14,3 @@ export default function Home() {
     </div>
   );
 }
- 
