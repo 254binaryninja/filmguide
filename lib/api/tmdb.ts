@@ -33,10 +33,9 @@ class TMDBService {
     return proxyUrl;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private async fetchFromTMDB<T>(
     endpoint: string,
-    params: Record<string, any> = {},
+    params: Record<string, string | number | boolean | undefined | null> = {},
   ): Promise<T> {
     const accessToken = process.env.NEXT_PUBLIC_TMDB_ACCESS_TOKEN!;
     if (!accessToken) {
