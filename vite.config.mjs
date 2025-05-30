@@ -8,6 +8,12 @@ export default async () => {
   return defineConfig({
     plugins: [react(), tsconfigPaths()],
     test: {
+      pool: "forks",
+      poolOptions: {
+        forks: {
+          singleFork: true, // Reduce memory usage
+        },
+      },
       globals: true,
       environment: "jsdom",
       setupFiles: "./_tests_/setup.ts",
