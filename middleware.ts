@@ -1,3 +1,5 @@
+export const runtime = "nodejs";
+
 import { clerkMiddleware } from "@clerk/nextjs/server";
 
 export default clerkMiddleware();
