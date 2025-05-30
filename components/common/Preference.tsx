@@ -201,7 +201,7 @@ export default function Preference({ preference }: PreferenceProps) {
                   key={movie.id}
                   className="border rounded-lg overflow-hidden relative group"
                 >
-                  <Link href={`/movie/${movie.id}`}>
+                  <Link href={`/movies/${movie.id}`}>
                     <div className="relative h-[150px]">
                       {movie.poster_path ? (
                         <Image
