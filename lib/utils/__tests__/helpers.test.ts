@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 // lib/utils/__tests__/helpers.test.ts
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { getCachedImage, cacheImage } from "../helpers";
