@@ -11,7 +11,7 @@
     "test": "vitest --config vite.config.mjs",
     "test:watch": "vitest --watch --config vite.config.mjs",
     "test:ui": "vitest --ui --config vite.config.mjs",
-    "coverage": "vitest run --coverage --config vite.config.mjs",
+    "coverage": "vitest run --coverage  --config vite.config.mjs",
     "format:check": "prettier --check .",
     "format": "prettier --write ."
   },
