@@ -123,4 +123,4 @@ describe('MyComponent', () => {
 
 ## Continuous Integration
 
-Tests are automatically run as part of our CI pipeline on each pull request and merge to main branch.
+Tests are automatically run as part of our CI pipeline on each pull request and merge to main/master branch.

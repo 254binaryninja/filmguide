@@ -11,11 +11,12 @@ export default function MovieCard({ movie }: { movie: Movie }) {
       whileHover={{ scale: 1.05 }}
       transition={{ duration: 0.3 }}
     >
-      <Link href={`/movies/${movie.id}`}>
+      <Link href={`/movies/${movie.id}`} data-testid="movie-link">
         <Image
           src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
           alt={movie.title}
           fill
+          data-testid="movie-poster"
           className="object-cover"
         />
         <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black to-transparent">
