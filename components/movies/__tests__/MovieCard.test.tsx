@@ -19,7 +19,12 @@ vi.mock("framer-motion", () => ({
 // Mock next/image
 vi.mock("next/image", () => ({
   default: ({ src, alt, className }: any) => (
-    <Image src={src} alt={alt} className={className} data-testid="movie-poster" />
+    <Image
+      src={src}
+      alt={alt}
+      className={className}
+      data-testid="movie-poster"
+    />
   ),
 }));
 
