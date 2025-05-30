@@ -1,8 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 // components/movies/__tests__/MovieCard.test.tsx
 import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import MovieCard from "../MovieCard";
 import { Movie } from "@/lib/api/types";
+import Image from "next/image";
 
 // Mock framer-motion
 vi.mock("framer-motion", () => ({
@@ -16,7 +19,7 @@ vi.mock("framer-motion", () => ({
 // Mock next/image
 vi.mock("next/image", () => ({
   default: ({ src, alt, className }: any) => (
-    <img src={src} alt={alt} className={className} data-testid="movie-poster" />
+    <Image src={src} alt={alt} className={className} data-testid="movie-poster" />
   ),
 }));
 
