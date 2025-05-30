@@ -41,6 +41,7 @@ jobs:
         run: pnpm test
         env:
           CI: true
+          NODE_OPTIONS: "--max-old-space-size=8192"
 
       - name: Build project
         run: pnpm build
