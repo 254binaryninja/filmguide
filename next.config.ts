@@ -3,9 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   experimental: {
     nodeMiddleware: true,
-    serverComponentsExternalPackages: [
-      "@clerk/nextjs",
-    ],
+    serverComponentsExternalPackages: ["@clerk/nextjs"],
   },
   reactStrictMode: true,
   images: {
