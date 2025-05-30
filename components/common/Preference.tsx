@@ -47,7 +47,7 @@ export default function Preference({ preference }: PreferenceProps) {
       setToken(null);
       setUserPreferences(null);
     }
-  }, [session, isSignedIn, token]);
+  }, [session, isSignedIn]);
 
   const fetchPreferenceData = useCallback(async () => {
     if (!isSignedIn || !user || !userPreferences) {
