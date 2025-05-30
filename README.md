@@ -17,7 +17,7 @@ A modern web application for movie enthusiasts to discover, track, and manage th
 
 - **Framework**: Next.js 15.3.2
 - **Language**: TypeScript
-- **Styling**: Tailwind CSS
+- **Styling**: Tailwind CSS v4
 - **State Management**: Zustand
 - **API Integration**: TMDB API
 - **Authentication**: Clerk
@@ -31,9 +31,9 @@ A modern web application for movie enthusiasts to discover, track, and manage th
 
 - Node.js 22.1.0 or higher
 - pnpm 9 or higher
-- TMDB API key
+- TMDB Access Token
 - Clerk account
-- Supabase account
+- Supabase account and a project instance
 
 ### Installation
 
@@ -65,7 +65,7 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
 4. Start the development server:
 
 ```bash
-pnpm dev
+pnpm run dev
 ```
 
 ## Testing
@@ -74,23 +74,22 @@ The project uses Vitest for testing. Run tests with:
 
 ```bash
 # Run tests
-pnpm test
+pnpm run test
 
 # Run tests in watch mode
-pnpm test:watch
+pnpm run test:watch
 
 # Run tests with UI
-pnpm test:ui
+pnpm run test:ui
 
 # Generate coverage report
-pnpm coverage
+pnpm run coverage
 ```
 
 Current test coverage:
 
-- Components: ~89% coverage
-- API Services: ~90% coverage
-- User Preferences: ~91% coverage
+- See the [TEST_SUMMARY.md](_tests_/TEST_SUMMARY.md)
+- On testing guidance see the [TEST_README](_tests_/README.md)
 
 ## Project Structure
 
@@ -132,11 +131,13 @@ This project uses GitHub Actions for CI/CD:
 
 - **Continuous Deployment**: Automatically deploys to Vercel on successful builds from the main branch
 
-### Required GitHub Secrets
+### Required GitHub Repository Secrets
 
 For CI/CD to work properly, add these secrets to your GitHub repository:
 
 - `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY`: Your Clerk publishable key
+- `NEXT_PUBLIC_SUPABASE_URL`: Your Supabase URL
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY`:Your Supabase anon key/api key
 - `CLERK_SECRET_KEY`: Your Clerk secret key
 - `NEXT_PUBLIC_TMDB_ACCESS_TOKEN`: Your TMDB access token
 - `VERCEL_TOKEN`: Your Vercel API token
@@ -147,6 +148,6 @@ For CI/CD to work properly, add these secrets to your GitHub repository:
 
 - [TMDB](https://www.themoviedb.org/) for the movie database API
 - [Clerk](https://clerk.dev/) for authentication
-- [Supabase](https://supabase.io/) for database services
+- [Supabase](https://supabase.com/) for database services/Postgres Instance
 - [Next.js](https://nextjs.org/) for the framework
 - [Tailwind CSS](https://tailwindcss.com/) for styling
