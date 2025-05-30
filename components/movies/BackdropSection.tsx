@@ -134,7 +134,7 @@ const BackdropSection = ({ movie }: { movie: MovieDetails }) => {
               transition={{ delay: 0.4 }}
               className="text-gray-300 italic mt-2"
             >
-              `&quot;`{movie.tagline}`&quot;`
+              &quot;{movie.tagline}&quot;
             </motion.p>
           )}
         </div>
