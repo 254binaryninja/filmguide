@@ -2,6 +2,19 @@
 
 A modern web application for movie enthusiasts to discover, track, and manage their movie watching experience. Built with Next.js, TypeScript, and TMDB API.
 
+## 🚀 Notable Features
+
+- ✨ **Framer Motion Animations** – Smooth, elegant transitions and micro-interactions enhance the user experience.
+- 🎥 **Custom Error Pages with Lottie Animations** – Branded 404 and error fallback pages for delightful failure states.
+- 💤 **Lazy Loading for Images** – Optimized performance and bandwidth savings via progressive loading.
+- ⚙️ **Smart Caching Strategy** – Custom TMDB service layer with React Query and proxy-based image caching.
+- 👤 **Progressive Authentication UX** – Browse as a guest; login only when personalization is needed (Watchlist/History).
+- 🔍 **Debounced Search Dialog** – Real-time search with throttling to reduce API calls and improve responsiveness.
+- 💅 **Clean, Modular Architecture** – Service-based design with typed contracts, separation of concerns, and scalable patterns.
+- 🧪 **Comprehensive Testing** – Unit-tested components, services, and state using Vitest + React Testing Library.
+- 📦 **CI/CD with GitHub Actions + Vercel** – Automated lint, test, and deploy pipeline for continuous delivery.
+- 🔐 **Secure Authentication** – Clerk-powered login/session management with protected routes via middleware.
+
 ## Features
 
 - 🎯 **Movie Discovery**: Search and browse movies with advanced filtering
