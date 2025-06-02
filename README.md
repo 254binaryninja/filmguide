@@ -24,6 +24,28 @@ A modern web application for movie enthusiasts to discover, track, and manage th
 - **Database**: Supabase
 - **Testing**: Vitest + React Testing Library
 - **Package Manager**: pnpm
+- **Observability**: Sentry
+
+## Observability 📊
+
+> **FilmGuide uses [Sentry](https://sentry.io) for comprehensive application monitoring and error tracking.**
+
+<div align="center">
+  <img src="https://sentry-brand.storage.googleapis.com/sentry-logo-black.png" alt="Sentry Logo" width="300" />
+</div>
+
+### Key Benefits:
+
+- 🔍 **Real-time Error Monitoring**: Instant alerts on application errors
+- 📈 **Performance Tracking**: Monitor application performance metrics
+- 🔄 **Session Replay**: Understand user interactions that lead to issues
+- 📱 **Cross-platform Support**: Tracking across web and mobile experiences
+- 🔒 **Security & Compliance**: GDPR, SOC 2, and HIPAA compliant
+
+> Sentry configuration files can be found at:
+>
+> - [`sentry.edge.config.ts`](./sentry.edge.config.ts)
+> - [`sentry.server.config.ts`](./sentry.server.config.ts)
 
 ## Getting Started
 
