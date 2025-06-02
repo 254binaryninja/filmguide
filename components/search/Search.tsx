@@ -195,7 +195,8 @@ export default function Search() {
                             ) || "/placeholder.png"
                           }
                           alt={movie.title}
-                          fill
+                          width={92}
+                          height={138}
                           style={{ objectFit: "cover" }}
                           className="rounded"
                         />
@@ -242,7 +243,8 @@ export default function Search() {
                                 ) || "/placeholder.png"
                               }
                               alt={movie.title}
-                              fill
+                              width={154}
+                              height={231}
                               style={{ objectFit: "cover" }}
                               className="rounded"
                             />

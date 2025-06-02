@@ -62,6 +62,8 @@ const CastMember = ({ person }: { person: Cast }) => {
           <Image
             src={profileUrl}
             alt={person.name}
+            width={185}
+            height={278}
             className="w-full h-full object-cover"
             onError={() => setImageError(true)}
           />

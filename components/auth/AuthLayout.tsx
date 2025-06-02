@@ -78,8 +78,9 @@ export default function AuthLayout({
                     ) || ""
                   }
                   alt={featuredMovie.title}
-                  fill
-                  className="object-cover"
+                  width={1920}
+                  height={1080}
+                  className="object-cover w-full h-full"
                   priority
                 />
               )}
