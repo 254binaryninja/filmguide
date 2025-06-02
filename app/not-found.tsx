@@ -95,9 +95,9 @@ export default function NotFound() {
             variants={itemVariants}
           >
             <p className="text-xl text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-              The page you`&apos;`re looking for seems to have wandered off into
-              the digital wilderness. Don`&apos;`t worry, even the best
-              explorers sometimes take a wrong turn!
+              The page you&apos;re looking for seems to have wandered off into
+              the digital wilderness. Don&apos;t worry, even the best explorers
+              sometimes take a wrong turn!
             </p>
 
             <div className="flex items-center justify-center gap-2 text-gray-500 dark:text-gray-400 mb-8">
@@ -132,23 +132,6 @@ export default function NotFound() {
               <ArrowLeft className="w-6 h-6" />
               Go Back
             </motion.button>
-          </motion.div>
-
-          {/* Help Text */}
-          <motion.div
-            className="text-center text-gray-500 dark:text-gray-400"
-            variants={itemVariants}
-          >
-            <p className="text-lg mb-2">Still lost?</p>
-            <p className="text-base">
-              Contact our support team or check out our{" "}
-              <button
-                onClick={() => router.push("/contact-us")}
-                className="text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300 underline"
-              >
-                help center
-              </button>
-            </p>
           </motion.div>
 
           {/* Background Decorations */}
