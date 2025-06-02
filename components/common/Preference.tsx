@@ -28,7 +28,7 @@ export default function Preference({ preference }: PreferenceProps) {
   const router = useRouter();
   const { session } = useSession();
   const { user } = useUser();
-  const [token, setToken] = useState<Promise<string | null> | null>(null);
+  const [, setToken] = useState<Promise<string | null> | null>(null);
   const [userPreferences, setUserPreferences] =
     useState<UserPreferences | null>(null);
   const [open, setOpen] = useState(false);
