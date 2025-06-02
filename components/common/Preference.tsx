@@ -36,7 +36,6 @@ export default function Preference({ preference }: PreferenceProps) {
   const [movies, setMovies] = useState<Movie[]>([]);
   const [loading, setLoading] = useState(false);
   const [movieIds, setMovieIds] = useState<number[]>([]);
-
   // Initialize token and userPreferences when session changes
   useEffect(() => {
     if (session && isSignedIn) {
@@ -210,8 +209,9 @@ export default function Preference({ preference }: PreferenceProps) {
                             "/placeholder-movie.png"
                           }
                           alt={movie.title}
-                          fill
-                          className="object-cover"
+                          width={342}
+                          height={513}
+                          className="object-cover w-full h-full"
                           sizes="(max-width: 768px) 100vw, 33vw"
                         />
                       ) : (

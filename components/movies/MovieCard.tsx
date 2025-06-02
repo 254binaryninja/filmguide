@@ -13,11 +13,11 @@ export default function MovieCard({ movie }: { movie: Movie }) {
     >
       <Link href={`/movies/${movie.id}`} data-testid="movie-link">
         <Image
-          src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+          src={`/api/image-proxy?url=${encodeURIComponent(`https://image.tmdb.org/t/p/w500${movie.poster_path}`)}`}
           alt={movie.title}
-          fill
-          data-testid="movie-poster"
-          className="object-cover"
+          width={500}
+          height={750}
+          className="object-cover w-full h-full"
         />
         <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black to-transparent">
           <h3 className="text-white text-lg font-semibold">{movie.title}</h3>

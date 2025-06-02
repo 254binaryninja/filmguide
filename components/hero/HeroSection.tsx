@@ -93,9 +93,10 @@ export default function FilmGuideHeroSection() {
             <Image
               src={backdropUrl}
               alt={featuredMovie.title}
-              fill
+              width={1920}
+              height={1080}
+              className="object-cover w-full h-full"
               priority
-              className="object-cover"
             />
           )}
           <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-transparent to-white/20 dark:from-black/90 dark:via-transparent dark:to-black/90"></div>
@@ -233,8 +234,9 @@ export default function FilmGuideHeroSection() {
                           ) || ""
                         }
                         alt={movie.title}
-                        fill
-                        className="object-cover rounded hover:scale-110 transition duration-300"
+                        width={92}
+                        height={138}
+                        className="object-cover rounded hover:scale-110 transition duration-300 w-full h-full"
                       />
                     )}
                   </div>

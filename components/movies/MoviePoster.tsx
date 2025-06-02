@@ -186,6 +186,8 @@ const MoviePoster = ({ movie }: { movie: MovieDetails }) => {
             <Image
               src={posterUrl}
               alt={movie.title}
+              width={500}
+              height={750}
               className="w-full h-full object-cover"
               onError={() => setImageError(true)}
             />

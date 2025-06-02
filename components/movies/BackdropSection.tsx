@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { format } from "date-fns";
 import { MovieDetails } from "@/lib/api/types";
+import { useRouter } from "next/navigation";
 
 const MovieMetadata = ({
   movie,
@@ -71,6 +72,7 @@ const MovieMetadata = ({
 );
 
 const BackdropSection = ({ movie }: { movie: MovieDetails }) => {
+  const router = useRouter();
   const [imageError, setImageError] = useState(false);
   const backdropUrl = movie?.backdrop_path
     ? tmdbService.getBackdropURLProxy(movie.backdrop_path, "w1280")
@@ -84,12 +86,40 @@ const BackdropSection = ({ movie }: { movie: MovieDetails }) => {
     return `${hours}h ${mins}m`;
   };
 
+  const handleBack = () => {
+    router.back();
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       className="relative w-full h-[50vh] md:h-[70vh]"
     >
+      {/* Back Button */}
+      <div className="absolute top-20 left-4 z-20">
+        <button
+          onClick={handleBack}
+          className="flex items-center justify-center bg-black/50 hover:bg-black/70 text-white rounded-full p-2 transition-colors"
+          aria-label="Go back"
+        >
+          <svg
+            className="h-6 w-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M15 19l-7-7 7-7"
+            />
+          </svg>
+        </button>
+      </div>
+
       {backdropUrl && !imageError ? (
         <div className="absolute inset-0 w-full h-full">
           <Image
