@@ -65,10 +65,19 @@ A modern web application for movie enthusiasts to discover, track, and manage th
 ### Prerequisites
 
 - Node.js 22.1.0 or higher
-- pnpm 9 or higher
+- **pnpm 10.12.1 or higher** (required - this project uses pnpm as the package manager)
 - TMDB Access Token
 - Clerk account
 - Supabase account and a project instance
+
+> **Note**: This project uses pnpm as the package manager. If you don't have pnpm installed, you can install it globally with:
+> ```bash
+> npm install -g pnpm
+> ```
+> Or enable Corepack (built into Node.js 16.9+) which will automatically use the correct version:
+> ```bash
+> corepack enable
+> ```
 
 ### Installation
 
