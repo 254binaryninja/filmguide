@@ -5,6 +5,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/providers/ThemeProviders";
 import ReactQueryProvider from "@/components/providers/ReactQueryProvider";
 import { ClerkProvider } from "@clerk/nextjs";
+import { Analytics } from "@vercel/analytics/next";
 import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
@@ -67,6 +68,7 @@ export default function RootLayout({
               enableSystem
               disableTransitionOnChange
             >
+              <Analytics />
               {children}
               <Toaster richColors />
             </ThemeProvider>
