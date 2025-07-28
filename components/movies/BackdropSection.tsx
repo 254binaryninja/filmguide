@@ -141,6 +141,7 @@ const BackdropSection = ({ movie }: { movie: MovieDetails }) => {
         </div>
       ) : (
         <div className="absolute inset-0 bg-gradient-to-b from-gray-800 to-gray-900">
+          {/* TODO : Add background pattern */}
           <div className="absolute inset-0 opacity-20 bg-pattern-dots"></div>
         </div>
       )}
