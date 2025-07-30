@@ -1,24 +1,25 @@
-import type { Meta, StoryObj } from "@storybook/react"
-import Search from "@/components/search/Search"
-import { ClerkProvider } from "@clerk/nextjs"
+import type { Meta, StoryObj } from "@storybook/react";
+import Search from "@/components/search/Search";
+import { ClerkProvider } from "@clerk/nextjs";
 import ReactQueryProvider from "@/components/providers/ReactQueryProvider";
 
-
 const meta: Meta<typeof Search> = {
-    title: "Search",
-    component: Search,
-}
+  title: "Search",
+  component: Search,
+};
 
-export default meta
+export default meta;
 
-type Story = StoryObj<typeof Search>
+type Story = StoryObj<typeof Search>;
 
 export const Default: Story = {
-    render: () => (<>
-    <ClerkProvider>
+  render: () => (
+    <>
+      <ClerkProvider>
         <ReactQueryProvider>
-        <Search />
+          <Search />
         </ReactQueryProvider>
-    </ClerkProvider>
-    </>),
-}
+      </ClerkProvider>
+    </>
+  ),
+};

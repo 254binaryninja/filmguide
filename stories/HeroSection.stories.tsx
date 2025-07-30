@@ -1,15 +1,15 @@
-import type { Meta, StoryObj } from "@storybook/react"
-import FilmGuideHeroSection from "@/components/hero/HeroSection"
+import type { Meta, StoryObj } from "@storybook/react";
+import FilmGuideHeroSection from "@/components/hero/HeroSection";
 
 const meta: Meta<typeof FilmGuideHeroSection> = {
-    title: "HeroSection",
-    component: FilmGuideHeroSection,
-}
+  title: "HeroSection",
+  component: FilmGuideHeroSection,
+};
 
-export default meta
+export default meta;
 
-type Story = StoryObj<typeof FilmGuideHeroSection>
+type Story = StoryObj<typeof FilmGuideHeroSection>;
 
 export const Default: Story = {
-    render: () => <FilmGuideHeroSection />,
-}
+  render: () => <FilmGuideHeroSection />,
+};
