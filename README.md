@@ -26,6 +26,26 @@ A modern web application for movie enthusiasts to discover, track, and manage th
 - **Package Manager**: pnpm
 - **Observability**: Sentry
 
+## UI Testing 
+ 
+**FilmGuide uses [storybook JS](https://storybook.js.org/) version 8.16.4  for UI testing by taking  advantage of storybook's isolated test environments**
+
+It spins up it's own server on port 6006 in order to view and play around with the components in a sandboxed environment.
+
+You can tweak it's behaviour in package.json here is it's current config.
+
+Here are the current components being tested
+[Stories](stories)
+
+```Json
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+```
+
+```bash
+pnpm storybook
+```
+
 ## Observability 📊
 
 > **FilmGuide uses [Sentry](https://sentry.io) for comprehensive application monitoring and error tracking.**
